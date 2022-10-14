@@ -168,9 +168,9 @@ def test_conv2d():
         filter_matrix = Filter.reshape(filter_outChannel, -1)
         return np.matmul(filter_matrix, im2col_matrix).reshape(N, filter_outChannel, out_H, out_W)
 
-    shapeX = (100, 3, 28, 28)
-    shapeF = (10, 3, 5, 5)
-    shapeY = (100, 10, 24, 24)
+    shapeX = (1, 3, 28, 28)
+    shapeF = (1, 3, 5, 5)
+    shapeY = (1, 1, 24, 24)
     x = np.random.uniform(0, 10, size=shapeX).astype(dtype)
     f = np.random.uniform(0, 10, size=shapeF).astype(dtype)
     y = np.zeros(shapeY).astype(dtype)

@@ -139,7 +139,7 @@ def mnist_logreg(executor_ctx, num_epochs=10, print_loss_val_each_epoch=False):
         time_measurements.append(time.time() - start_time)
         if print_loss_val_each_epoch:
             print("loss = %f; Time taken this epoch = %f s" 
-                % (np.asscalar(loss_val.asnumpy()), time_measurements[-1]))
+                % (np.ndarray.item(loss_val.asnumpy()), time_measurements[-1]))
 
     correct_predictions = []
     for minibatch_index in range(n_valid_batches):
@@ -157,7 +157,7 @@ def mnist_logreg(executor_ctx, num_epochs=10, print_loss_val_each_epoch=False):
             convert_to_numpy_ret_vals=True)
         correct_prediction = np.equal(
             np.argmax(valid_y_val.asnumpy(), 1),
-            np.argmax(valid_y_predicted, 1)).astype(np.float)
+            np.argmax(valid_y_predicted, 1)).astype(float)
         correct_predictions.extend(correct_prediction)
     accuracy = np.mean(correct_predictions)
     # validation set accuracy=0.928200
@@ -297,7 +297,7 @@ def mnist_mlp(executor_ctx=None, num_epochs=10,
         time_measurements.append(time.time() - start_time)
         if print_loss_val_each_epoch:
             print("loss = %f; Time taken this epoch = %f s" 
-                % (np.asscalar(loss_val.asnumpy()), time_measurements[-1]))
+                % (np.ndarray.item(loss_val.asnumpy()), time_measurements[-1]))
 
 
     correct_predictions = []
@@ -320,7 +320,7 @@ def mnist_mlp(executor_ctx=None, num_epochs=10,
             convert_to_numpy_ret_vals=True)
         correct_prediction = np.equal(
             np.argmax(valid_y_val.asnumpy(), 1),
-            np.argmax(valid_y_predicted, 1)).astype(np.float)
+            np.argmax(valid_y_predicted, 1)).astype(float)
         correct_predictions.extend(correct_prediction)
     accuracy = np.mean(correct_predictions)
     # validation set accuracy=0.970800

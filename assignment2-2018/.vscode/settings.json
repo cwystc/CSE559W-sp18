@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "/root/tvm8/python",
+        "/root/cwy/CSE559W-sp18/assignment2-2018/python"
+    ]
+}
